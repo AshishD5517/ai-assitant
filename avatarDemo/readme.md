@@ -37,7 +37,7 @@ On another machine, substitute your own project path. Run the following Maven co
 
 ## 2. Configure credentials
 
-Spring reads `src/main/resources/application.properties`. It currently contains credential values; use your own credentials and avoid publishing that file with secrets. The environment variables below override those properties without changing the source file.
+Spring reads `src/main/resources/application.properties`, which pulls credentials from the environment variables `OPENAI_API_KEY`, `LIVEKIT_URL`, `LIVEKIT_API_KEY` and `LIVEKIT_API_SECRET`. Spring will not start until all four are set. The `SPRING_AI_OPENAI_API_KEY` form in the table below also works and takes precedence.
 
 | Environment variable | Spring property | Purpose |
 | --- | --- | --- |
@@ -52,7 +52,7 @@ Spring reads `src/main/resources/application.properties`. It currently contains 
 Set variables in the terminal where you will launch Spring. Replace every placeholder:
 
 ```bash
-export SPRING_AI_OPENAI_API_KEY='your-openai-api-key'
+export OPENAI_API_KEY='your-openai-api-key'
 export LIVEKIT_URL='wss://your-project.livekit.cloud'
 export LIVEKIT_API_KEY='your-livekit-api-key'
 export LIVEKIT_API_SECRET='your-livekit-api-secret'
@@ -61,7 +61,7 @@ export LIVEKIT_API_SECRET='your-livekit-api-secret'
 Windows PowerShell equivalent:
 
 ```powershell
-$env:SPRING_AI_OPENAI_API_KEY = 'your-openai-api-key'
+$env:OPENAI_API_KEY = 'your-openai-api-key'
 $env:LIVEKIT_URL = 'wss://your-project.livekit.cloud'
 $env:LIVEKIT_API_KEY = 'your-livekit-api-key'
 $env:LIVEKIT_API_SECRET = 'your-livekit-api-secret'

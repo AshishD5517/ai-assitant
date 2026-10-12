@@ -52,11 +52,11 @@ python -m pip check
 
 If activation is unavailable, run commands with `.venv/bin/python` on macOS/Linux or `.\.venv\Scripts\python.exe` on Windows.
 
-**`requirements.txt` is currently empty.** `pip install -r requirements.txt` alone will not install the required libraries. The explicit versions above are taken from package metadata in the supplied `.venv`, not a dependency lockfile. They include all direct external imports in `agent.py`; pip installs their transitive dependencies. A clean installation has not been tested as part of this documentation change.
+The same pinned versions are listed in `requirements.txt`, so `python -m pip install -r requirements.txt` is equivalent. A clean install of these pins was checked on Python 3.13.
 
 ## 2. Configure `.env.local`
 
-Create or edit `.env.local` in the same directory as `agent.py`, replacing the placeholders with your own values:
+Copy `.env.example` to `.env.local` in the same directory as `agent.py`, replacing the placeholders with your own values:
 
 ```dotenv
 LIVEKIT_URL=wss://your-project.livekit.cloud
@@ -136,7 +136,7 @@ Start the worker **before** creating the browser session. If it was started late
 | --- | --- |
 | `agent.py` | Environment loading, worker entry point, STT/TTS configuration, Spring HTTP call, Synthesia session |
 | `.env.local` | Local service credentials and avatar/voice/backend settings |
-| `requirements.txt` | Currently empty; use the explicit installation command above |
+| `requirements.txt` | Pinned dependencies; `pip install -r requirements.txt` |
 | `.venv/` | Local installed Python environment; not portable source code |
 | `__pycache__/`, `.idea/` | Generated Python cache and IDE metadata |
 
